@@ -1,0 +1,41 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.7'
+
+#Forcing Bundler to install 1.3.5. Also arranging for SQLite to be included only in the
+#development environment, which prevents conflicts with the DB used by Heroku.
+group :development do
+  gem 'sqlite3', '1.3.5'
+end
+
+group :assets do
+  gem 'sass-rails',   '3.2.4'
+  gem 'coffee-rails', '3.2.2'
+  gem 'uglifier', '1.2.3'
+end
+
+# This is what goes to HEROKU!!
+group :production do
+  gem 'pg', '0.12.2'
+end
+
+#the >= notation always performs upgrades, whereas the ~> 3.2.2 notation only performs upgrades 
+#to minor point releases (e.g., from 3.1.1 to 3.1.2), but not to major point releases (e.g., from 3.1 to 3.2). 
+#Unfortunately, experience shows that even minor point releases often break things, 
+#so for the Rails Tutorial we’ll err on the side of caution by including exact version numbers for virtually all gems. 
+gem 'jquery-rails', '2.0.0'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
